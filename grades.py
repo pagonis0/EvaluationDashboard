@@ -69,8 +69,8 @@ class GradeHandling:
         result_json = json.dumps(all_entries)
         parsed_data = json.loads(result_json)
 
-        self.df = pd.DataFrame(parsed_data['module_base_info'])
-        print(self.df)
+        #self.df = pd.DataFrame(parsed_data['module_base_info'])
+        #print(self.df)
 
     def preprocess(self):
         if self.__fetch() is None:
