@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 from pandas import json_normalize
 from datetime import date, time
 from tqdm import tqdm
@@ -17,12 +16,10 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 pd.set_option('mode.chained_assignment', None)
 
-
-class EventHandling:
+class GradeHandling:
 
     def __init__(self):
         self.df = None
-        self.cache_file = 'event_data_cache.json'
 
     def __fetch(self):
         requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
@@ -32,26 +29,11 @@ class EventHandling:
         try:
             json_data = requests.get('https://success-ai.rz.fh-ingolstadt.de/eventService/get_data_from_db',
                                      verify=False).json()
-            self.df = pd.DataFrame(json_data['data'])
-
-            # Save the latest data to cache
-            with open(self.cache_file, 'w') as cache_file:
-                json.dump(json_data, cache_file)
-
         except requests.exceptions.RequestException as e:
             print(f"Could not access Event Collection Data (EVC): {e}")
+            return None
 
-            # Try to load data from cache
-            if os.path.exists(self.cache_file):
-                try:
-                    with open(self.cache_file, 'r') as cache_file:
-                        cached_data = json.load(cache_file)
-                        self.df = pd.DataFrame(cached_data['data'])
-                        print("Using cached data.")
-                        return self.df
-                except Exception as cache_exception:
-                    print(f"Error loading cached data: {cache_exception}")
-                    return pd.DataFrame()  # Return an empty DataFrame
+        self.df = pd.DataFrame(json_data['data'])
 
         return self.df
 
@@ -73,6 +55,3 @@ class EventHandling:
         self.df['day'] = self.df['timecreated'].dt.date
 
         return self.df
-
-
-

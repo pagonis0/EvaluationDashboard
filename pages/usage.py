@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc, callback, Output, Input, ClientsideFunction
+from dash import Dash, html, dcc, callback, Output, Input, ClientsideFunction, dash_table
 import dash_daq as daq
 import plotly.express as px
 from dash import clientside_callback
@@ -19,6 +19,11 @@ def usage_filters():
     """
     :return: A Div containing controls for graphs.
     """
+    if event_handler.df is None:
+        print("DataFrame is None. Data fetching may have failed.")
+        print(df)
+        return html.Div("Error: Data fetching failed.")
+
     return html.Div(
         id="control-card",
         children=[
@@ -109,7 +114,7 @@ layout = html.Div(
             children=[usage_filters()]
             + [
                 html.Div(
-                    ["initial child"], id="output-clientside1", style={"display": "none"}
+                    children=["initial child"], id="output-clientside1", style={"display": "none"}
                 )
             ],
         ),
@@ -135,8 +140,9 @@ layout = html.Div(
                 html.Div(
                     id="LNusage_card",
                     children=[
-                        html.B("Zsage per Learning Nugget"),
+                        html.B("Usage per Learning Nugget"),
                         html.Hr(),
+                        dash_table.DataTable(id="table")
                         #html.Div(id="wait_time_table", children=initialize_table()),
                     ],
                 ),
@@ -226,3 +232,13 @@ def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_
 
     return fig
 
+@callback(Output('table', 'data-table'),
+          [Input('nugget-dropdown', 'value'),
+           Input('course-dropdown', 'value'),
+           Input('date-picker-range', 'start_date'),
+           Input('date-picker-range', 'end_date'),
+           Input('legend-toggle-btn', 'n_clicks'),
+           Input("reset-btn", "n_clicks")]
+          )
+def update_data_table(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click):
+    pass
