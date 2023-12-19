@@ -1,15 +1,11 @@
 import pandas as pd
 import os
-from pandas import json_normalize
-from datetime import date, time
-from tqdm import tqdm
+from apscheduler.schedulers.background import BackgroundScheduler
+import pytz
+import time
 import json
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-import matplotlib.pyplot as plt
-from matplotlib.cm import get_cmap
-from matplotlib.colors import Normalize
-import seaborn as sns
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -23,6 +19,16 @@ class EventHandling:
     def __init__(self):
         self.df = None
         self.cache_file = 'event_data_cache.json'
+        self.scheduler = BackgroundScheduler()
+
+        # Schedule the update_data function to run every night at 01:00 GMT+2
+        self.scheduler.add_job(self.__update_data, 'cron', hour=1, minute=0, timezone=pytz.timezone('Europe/Berlin'))
+        self.scheduler.start()
+
+    def __update_data(self):
+        # Function to update data and cache
+        print('Updating data and cache...')
+        self.__fetch()
 
     def __fetch(self):
         requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
@@ -73,6 +79,3 @@ class EventHandling:
         self.df['day'] = self.df['timecreated'].dt.date
 
         return self.df
-
-
-

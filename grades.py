@@ -21,21 +21,56 @@ class GradeHandling:
     def __init__(self):
         self.df = None
 
-    def __fetch(self):
-        requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
+    def _fetch(self):
+        url = "https://success.thi.de/webservice/rest/server.php"
+        token = "38cb1aa68d55c4f2d8dcb691a306b2f6"
+        function = "local_wstemplate_get_all_grades"
+        format = "json"
+        max_limit = 3000000000
 
-        print('Fetching new json data... (Creating local cache)')
+        offset = 0
+        limit = 2000
 
-        try:
-            json_data = requests.get('https://success-ai.rz.fh-ingolstadt.de/eventService/get_data_from_db',
-                                     verify=False).json()
-        except requests.exceptions.RequestException as e:
-            print(f"Could not access Event Collection Data (EVC): {e}")
-            return None
+        all_entries = []
 
-        self.df = pd.DataFrame(json_data['data'])
+        while True:
+            params = {
+                'wstoken': token,
+                'wsfunction': function,
+                'moodlewsrestformat': format,
+                'limit': limit,
+                'offset': offset
+            }
 
-        return self.df
+            response = requests.get(url, params=params)
+
+            if response.status_code != 200:
+                print(f"Error: {response.status_code}")
+                break
+
+            data = response.json()
+
+            # Check if data is empty or reaches the end
+            if not data:
+                print("Reached end of data.")
+                break
+
+            # Process the data as needed
+            all_entries.extend(data)
+
+            # Update offset for the next request
+            offset += limit
+
+            # Break if offset exceeds the maximum limit
+            if offset >= max_limit:
+                print("Reached maximum limit.")
+                break
+
+        result_json = json.dumps(all_entries)
+        parsed_data = json.loads(result_json)
+
+        self.df = pd.DataFrame(parsed_data['module_base_info'])
+        print(self.df)
 
     def preprocess(self):
         if self.__fetch() is None:
@@ -55,3 +90,6 @@ class GradeHandling:
         self.df['day'] = self.df['timecreated'].dt.date
 
         return self.df
+
+grades = GradeHandling()
+print(grades._fetch())
