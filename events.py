@@ -1,11 +1,12 @@
 import pandas as pd
 import os
-from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
 import time
 import json
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from apscheduler.schedulers.background import BackgroundScheduler
+from cachetools import TTLCache
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -18,46 +19,32 @@ class EventHandling:
 
     def __init__(self):
         self.df = None
-        self.cache_file = 'event_data_cache.json'
-        #self.scheduler = BackgroundScheduler()
-
-        # Schedule the update_data function to run every night at 01:00 GMT+2
-        #self.scheduler.add_job(self.__update_data, 'cron', hour=1, minute=0, timezone=pytz.timezone('Europe/Berlin'))
-        #self.scheduler.start()
-
-    #def __update_data(self):
-        # Function to update data and cache
-    #    print('Updating data and cache...')
-    #    self.__fetch()
+        self.cache = TTLCache(maxsize=1, ttl=3600)
+        self.scheduler = BackgroundScheduler()
+        self.scheduler.add_job(self.__fetch, 'interval', minutes=60)
+        self.scheduler.start()
 
     def __fetch(self):
         requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
         print('Fetching new json data... (Creating local cache)')
 
+
         try:
             json_data = requests.get('https://success-ai.rz.fh-ingolstadt.de/eventService/get_data_from_db',
                                      verify=False).json()
+            self.cache['data'] = json_data
             self.df = pd.DataFrame(json_data['data'])
-
-            # Save the latest data to cache
-            with open(self.cache_file, 'w') as cache_file:
-                json.dump(json_data, cache_file)
 
         except requests.exceptions.RequestException as e:
             print(f"Could not access Event Collection Data (EVC): {e}")
-
-            # Try to load data from cache
-            if os.path.exists(self.cache_file):
-                try:
-                    with open(self.cache_file, 'r') as cache_file:
-                        cached_data = json.load(cache_file)
-                        self.df = pd.DataFrame(cached_data['data'])
-                        print("Using cached data.")
-                        return self.df
-                except Exception as cache_exception:
-                    print(f"Error loading cached data: {cache_exception}")
-                    return pd.DataFrame()  # Return an empty DataFrame
+            if 'data' in self.cache:
+                cached_data = self.cache['data']
+                self.df = pd.DataFrame(cached_data)
+                print("Using cached data.")
+            else:
+                print("Error loading cached data. No cached data available.")
+                self.df = pd.DataFrame()
 
         return self.df
 
@@ -69,6 +56,10 @@ class EventHandling:
                    99, 101, 103, 117, 119, 120, 122, 123, 131, 145, 146, 149, 156, 161, 248]
         crs_rmv = [1, 2, 3, 5, 6, 10, 13, 14, 15, 16, 17, 23, 24, 26, 28, 33]
 
+        self.df['user_id'] = self.df['user_id'].astype(int)
+        self.df['courseid'] = self.df['courseid'].astype(int)
+
+        # Filter out rows
         self.df = self.df[~self.df['user_id'].isin(usr_rmv)]
         self.df = self.df[~self.df['courseid'].isin(crs_rmv)]
 

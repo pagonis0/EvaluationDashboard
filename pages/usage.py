@@ -10,8 +10,18 @@ import pandas as pd
 
 
 event_handler = EventHandling()
+
+@callback(
+    Output('hidden-div', 'children'),
+    [Input('update-data-btn', 'n_clicks')]
+)
+def update_data_callback(n_clicks):
+    event_handler.preprocess()
+    return None
+
+# Fetch the initial data
 df = event_handler.preprocess()
-print(df[df['courseid'] == 1])
+
 
 dash.register_page(__name__)
 
@@ -96,6 +106,11 @@ def usage_filters():
             html.Div(
                 id="reset-btn-outer",
                 children=html.Button(id="reset-btn", children="Reset", n_clicks=0),
+            ),
+            # Add the following button for updating data
+            html.Div(
+                id="update-data-btn-outer",
+                children=html.Button(id="update-data-btn", children="Update Data", n_clicks=0),
             ),
             #html.Div(
             #    id="legend-toggle",
@@ -183,7 +198,7 @@ def update_nugget_options(selected_courses):
     prevent_initial_call=True
 )
 def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click):
-    filtered_df = df
+    filtered_df = event_handler.df.copy()
 
     if selected_nuggets:
         filtered_df = filtered_df[filtered_df['nuggetName'].isin(selected_nuggets)]
@@ -228,7 +243,6 @@ def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_
         fig.update_layout(showlegend=False)
     else:
         fig.update_layout(showlegend=True)
-
 
     return fig
 
