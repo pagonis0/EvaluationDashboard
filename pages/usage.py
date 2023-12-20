@@ -11,7 +11,7 @@ import pandas as pd
 
 event_handler = EventHandling()
 df = event_handler.preprocess()
-
+print(df[df['courseid'] == 1])
 
 dash.register_page(__name__)
 

@@ -19,16 +19,16 @@ class EventHandling:
     def __init__(self):
         self.df = None
         self.cache_file = 'event_data_cache.json'
-        self.scheduler = BackgroundScheduler()
+        #self.scheduler = BackgroundScheduler()
 
         # Schedule the update_data function to run every night at 01:00 GMT+2
-        self.scheduler.add_job(self.__update_data, 'cron', hour=1, minute=0, timezone=pytz.timezone('Europe/Berlin'))
-        self.scheduler.start()
+        #self.scheduler.add_job(self.__update_data, 'cron', hour=1, minute=0, timezone=pytz.timezone('Europe/Berlin'))
+        #self.scheduler.start()
 
-    def __update_data(self):
+    #def __update_data(self):
         # Function to update data and cache
-        print('Updating data and cache...')
-        self.__fetch()
+    #    print('Updating data and cache...')
+    #    self.__fetch()
 
     def __fetch(self):
         requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
@@ -67,8 +67,11 @@ class EventHandling:
 
         usr_rmv = [-20, -10, -1, 2, 3, 5, 6, 7, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
                    99, 101, 103, 117, 119, 120, 122, 123, 131, 145, 146, 149, 156, 161, 248]
-        mask = self.df['user_id'].isin(usr_rmv)
-        self.df = self.df[~mask]
+        crs_rmv = [1, 2, 3, 5, 6, 10, 13, 14, 15, 16, 17, 23, 24, 26, 28, 33]
+
+        self.df = self.df[~self.df['user_id'].isin(usr_rmv)]
+        self.df = self.df[~self.df['courseid'].isin(crs_rmv)]
+
         self.df['timecreated'] = pd.to_datetime(self.df['timecreated'])
 
         self.df['timecreated'] = pd.to_datetime(self.df['timecreated'], unit='s')
