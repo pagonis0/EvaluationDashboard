@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc, callback, Output, Input, ClientsideFunction, dash_table
+from dash import Dash, html, dcc, callback, Output, Input, ClientsideFunction, dash_table, ctx
 import dash_daq as daq
 import plotly.express as px
 from dash import clientside_callback
@@ -22,6 +22,10 @@ def update_data_callback(n_clicks):
 # Fetch the initial data
 df = event_handler.preprocess()
 
+def extract_academic_years(df):
+    years = pd.to_datetime(df['day']).dt.year.unique()
+    academic_years = [f"{year}/{year+1}" for year in years]
+    return academic_years
 
 dash.register_page(__name__)
 
@@ -31,8 +35,9 @@ def usage_filters():
     """
     if event_handler.df is None:
         print("DataFrame is None. Data fetching may have failed.")
-        print(df)
         return html.Div("Error: Data fetching failed.")
+
+    academic_years = extract_academic_years(event_handler.df)
 
     return html.Div(
         id="control-card",
@@ -41,11 +46,8 @@ def usage_filters():
             html.P("Studienjahr auswählen"),
             dcc.Dropdown(
                 id="academic-year",
-                options=[
-                    {'label': '2022/2023', 'value': '2022/2023'},
-                    {'label': '2023/2024', 'value': '2024/2024'},
-                ],
-                value='2022/2023',
+                options=[],
+                value=max(academic_years),
             ),
             html.Br(),
             #Select course
@@ -68,6 +70,7 @@ def usage_filters():
                 ],
                 value='Alle',
                 multi=False,
+                disabled=True,
             ),
             html.Br(),
             #Select Specific LN
@@ -91,6 +94,7 @@ def usage_filters():
                        ],
                 value='Medium',
                 multi=True,
+                disabled=True,
             ),
             html.Br(),
             # Select day range
@@ -103,19 +107,20 @@ def usage_filters():
             ),
             html.Br(),
             html.Br(),
-            html.Div(
-                id="reset-btn-outer",
-                children=html.Button(id="reset-btn", children="Reset", n_clicks=0),
+            html.Div([
+                html.Div(
+                    id="reset-btn-outer",
+                    children=html.Button(id="reset-btn", children="Reset", n_clicks=0),
+                    style={'float': 'right', 'margin-right': '20px'}
+                ),
+                html.Div(
+                    id="update-data-btn-outer",
+                    children=html.Button(id="update-data-btn", children="Update Data", n_clicks=0),
+                    style={'float': 'right', 'margin-right': '20px'}
+                )
+            ],
+            className='row'
             ),
-            # Add the following button for updating data
-            html.Div(
-                id="update-data-btn-outer",
-                children=html.Button(id="update-data-btn", children="Update Data", n_clicks=0),
-            ),
-            #html.Div(
-            #    id="legend-toggle",
-            #    children=html.Button(id="legend-toggle-btn", children="Toggle Legend", n_clicks=0),
-            #),
         ],
     )
 
@@ -147,6 +152,7 @@ layout = html.Div(
                         dcc.Graph(id="bar-plot"),
                     ],
                 ),
+                html.Br(),
                 html.Div(
                     id="legend-toggle",
                     children=html.Button(id="legend-toggle-btn", children="Toggle Legend", n_clicks=0),
@@ -172,6 +178,22 @@ layout = html.Div(
 @callback(Output('page-content1', 'children1'),
               [Input('url', 'pathname')])
 
+
+@callback(
+    Output('academic-year', 'options'),
+    [Input('update-data-btn', 'n_clicks')]
+)
+def update_academic_year_options(n_clicks):
+    if event_handler.df is None:
+        return [{'label': 'Error: Data fetching failed', 'value': None}]
+
+    academic_years = extract_academic_years(event_handler.df)
+
+    options = [{'label': year, 'value': year} for year in academic_years]
+    options.insert(0, {'label': 'All', 'value': 'All'})  # Add an option for displaying all data
+
+    return options
+
 @callback(
     Output('nugget-dropdown', 'options'),
     [Input('course-dropdown', 'value')]
@@ -194,11 +216,29 @@ def update_nugget_options(selected_courses):
      Input('date-picker-range', 'start_date'),
      Input('date-picker-range', 'end_date'),
      Input('legend-toggle-btn', 'n_clicks'),
-     Input("reset-btn", "n_clicks")],
+     Input("reset-btn", "n_clicks"),
+     Input('academic-year', 'value')],
     prevent_initial_call=True
 )
-def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click):
+def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click, academic_year):
+    #if reset_click:
+    #    # Reset filters to default values
+    #    default_start_date = df['day'].min()
+    #    default_end_date = df['day'].max()
+    #    default_start_date_str = default_start_date.strftime('%Y-%m-%d')
+    #    default_end_date_str = default_end_date.strftime('%Y-%m-%d')
+
+        # Return an empty figure dictionary
+    #    return {'data': [], 'layout': {}}
+
     filtered_df = event_handler.df.copy()
+
+    if academic_year and academic_year != 'All':
+        start_date_range = pd.to_datetime(f'01-10-{academic_year.split("/")[0]}')
+        end_date_range = pd.to_datetime(f'30-09-{academic_year.split("/")[1]}') + pd.DateOffset(days=1)
+        filtered_df = filtered_df[
+            (filtered_df['day'] >= start_date_range.date()) & (filtered_df['day'] < end_date_range.date())
+            ]
 
     if selected_nuggets:
         filtered_df = filtered_df[filtered_df['nuggetName'].isin(selected_nuggets)]
@@ -245,6 +285,8 @@ def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_
         fig.update_layout(showlegend=True)
 
     return fig
+
+
 
 @callback(Output('table', 'data-table'),
           [Input('nugget-dropdown', 'value'),
