@@ -103,7 +103,8 @@ def usage_filters():
                 id='date-picker-range',
                 start_date=df['day'].min(),
                 end_date=df['day'].max(),
-                display_format='YYYY-MM-DD'
+                display_format='YYYY-MM-DD',
+                style={'border': 0}
             ),
             html.Br(),
             html.Br(),
@@ -221,6 +222,7 @@ def update_nugget_options(selected_courses):
     prevent_initial_call=True
 )
 def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click, academic_year):
+    print("Callback triggered.")
     #if reset_click:
     #    # Reset filters to default values
     #    default_start_date = df['day'].min()
@@ -234,8 +236,9 @@ def update_bar_plot(selected_nuggets, selected_courses, start_date, end_date, n_
     filtered_df = event_handler.df.copy()
 
     if academic_year and academic_year != 'All':
-        start_date_range = pd.to_datetime(f'01-10-{academic_year.split("/")[0]}')
-        end_date_range = pd.to_datetime(f'30-09-{academic_year.split("/")[1]}') + pd.DateOffset(days=1)
+        start_date_range = pd.to_datetime(f'01-10-{academic_year.split("/")[0]}', format='%d-%m-%Y', dayfirst=True)
+        end_date_range = pd.to_datetime(f'30-09-{academic_year.split("/")[1]}', format='%d-%m-%Y',
+                                        dayfirst=True) + pd.DateOffset(days=1)
         filtered_df = filtered_df[
             (filtered_df['day'] >= start_date_range.date()) & (filtered_df['day'] < end_date_range.date())
             ]

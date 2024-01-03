@@ -1,43 +1,56 @@
 import dash
-from dash import Dash, html, dcc, callback, Output, Input, ClientsideFunction
+from dash import html, dcc, callback, Output, Input, dash_table
 import dash_daq as daq
 import plotly.express as px
-from datetime import datetime as dt
+from grades import GradeHandling
+import pandas as pd
+
+
+grade_handler = GradeHandling()
+
+@callback(
+    Output('score-hidden-div', 'children'),
+    [Input('update-data-btn', 'n_clicks')]
+)
+def update_score_callback(n_clicks):
+    grade_handler.preprocess()
+    return None
+
+# Fetch the initial data
+df = grade_handler.preprocess()
+
+def extract_academic_years(df):
+    years = pd.to_datetime(df['day']).dt.year.unique()
+    academic_years = [f"{year}/{year+1}" for year in years]
+    return academic_years
 
 dash.register_page(__name__)
 
-
-
-
 def score_filters():
-    """
+    if grade_handler.df is None:
+        print("DataFrame is None. Data fetching may have failed.")
+        return html.Div("Error: Data fetching failed.")
 
-    :return: A Div containing controls for graphs.
-    """
+    academic_years = extract_academic_years(grade_handler.df)
+
     return html.Div(
         id="control-card",
         children=[
             #Select year
             html.P("Studienjahr auswählen"),
             dcc.Dropdown(
-                id="academic-year",
-                options=[
-                    {'label': '2022/2023', 'value': '2022/2023'},
-                    {'label': '2023/2024', 'value': '2024/2024'},
-                ],
-                value='2022/2023',
+                id="sc-academic-year",
+                options=[],
+                value=max(academic_years),
             ),
             html.Br(),
             #Select course
             html.P("Kurs auswählen"),
             dcc.Dropdown(
-                id="couse",
-                options=[
-                    {'label': 'Mathe 1', 'value': 'Mathe 1'},
-                    {'label': 'Statistik 1', 'value': 'Statistik 1'},
-                    {'label': 'Elektrotechnik 1', 'value': 'Elektrotechnik 1'},
-                ],
-                value='Mathe 1',
+                id='sc-course-dropdown',
+                options=[{'label': course, 'value': course} for course in df['fullname'].unique()],
+                multi=True,
+                placeholder='Kurs auswählen'
             ),
             html.Br(),
             #Select Topic
@@ -51,18 +64,16 @@ def score_filters():
                 ],
                 value='Alle',
                 multi=False,
+                disabled=True,
             ),
             html.Br(),
             #Select Specific LN
             html.P("Learning Nugget auswählen"),
             dcc.Dropdown(
-                id="LN-select",
-                options=[
-                    {'label': 'Learning Nugget ABC', 'value': 'abc'},
-                    {'label': 'Learning Nugget DEF', 'value': 'def'},
-                    {'label': 'Learning Nugget XYZ', 'value': 'xyz'},
-                ],
+                id='sc-nugget-dropdown',
                 multi=True,
+                placeholder='Learning Nugget auswählen',
+                # style={'whiteSpace': 'nowrap'}
             ),
             html.Br(),
             #Select Difficulty
@@ -77,6 +88,7 @@ def score_filters():
                        ],
                 value='Medium',
                 multi=True,
+                disabled=True,
             ),
             html.Br(),
             # Only recommended LNs
@@ -104,20 +116,31 @@ def score_filters():
             # Select day range
             html.P("Datum auswählen"),
             dcc.DatePickerRange(
-                id="date-picker-select",
-                start_date=dt(2022, 10, 1),
-                end_date=dt(2023, 9, 30),
-                min_date_allowed=dt(2022, 10, 1),
-                max_date_allowed=dt(2023, 9, 30),
-                initial_visible_month=dt(2022, 10, 1),
+                id='sc-date-picker-range',
+                start_date=df['day'].min(),
+                end_date=df['day'].max(),
+                display_format='YYYY-MM-DD',
+                style={'border': 0}
             ),
             html.Br(),
-            html.Div(
-                id="reset-btn-outer",
-                children=html.Button(id="reset-btn", children="Reset", n_clicks=0),
-            ),
+            html.Br(),
+            html.Div([
+                html.Div(
+                    id="sc-reset-btn-outer",
+                    children=html.Button(id="sc-reset-btn", children="Reset", n_clicks=0),
+                    style={'float': 'right', 'margin-right': '20px'}
+                ),
+                html.Div(
+                    id="update-data-btn-outer",
+                    children=html.Button(id="update-data-btn", children="Update Data", n_clicks=0),
+                    style={'float': 'right', 'margin-right': '20px'}
+                ),
         ],
-    )
+        className='row'
+        )
+    ],
+)
+
 
 layout = html.Div(
     id="app-container",
@@ -129,7 +152,7 @@ layout = html.Div(
             children=[score_filters()]
             + [
                 html.Div(
-                    ["initial child"], id="output-clientside", style={"display": "none"}
+                    children=["initial child"], id="output-clientside1", style={"display": "none"}
                 )
             ],
         ),
@@ -142,45 +165,129 @@ layout = html.Div(
                 html.Div(
                     id="score_card",
                     children=[
-                        html.B("Student Scores"),
+                        html.B("LN Scores"),
                         html.Hr(),
-                        dcc.Graph(id="score_graph"),
+                        dcc.Graph(id="score-bar-plot"),
                     ],
+                ),
+                html.Br(),
+                html.Div(
+                    id="legend-toggle",
+                    children=html.Button(id="sc-legend-toggle-btn", children="Toggle Legend", n_clicks=0),
                 ),
                 # Patient Wait time by Department
-                html.Div(
-                    id="LNscore_card",
-                    children=[
-                        html.B("Score per Learning Nugget"),
-                        html.Hr(),
+                #html.Div(
+                #    id="LNscore_card",
+                #    children=[
+                #        html.B("Score per Learning Nugget"),
+                #        html.Hr(),
+                #        dash_table.DataTable(id="table")
                         #html.Div(id="wait_time_table", children=initialize_table()),
-                    ],
-                ),
+                #    ],
+                #),
             ],
         ),
+        html.Div(id='hidden-div', style={'display': 'none'}),
     ],
 )
 
-# Define callback to update the page content based on the URL
-@callback(Output('page-content', 'children'),
+@callback(Output('page-content2', 'children2'),
               [Input('url', 'pathname')])
 
-# Callback to update Patient Volume Heatmap based on button click
 @callback(
-    Output("patient_volume_hm", "figure"),
-    [Input("page-1-button", "n_clicks"), Input("page-2-button", "n_clicks")],
-    prevent_initial_call=True
-)
-def update_patient_volume_graph(page1_clicks, page2_clicks):
-    # Replace the following with your actual logic for generating Patient Volume Heatmap
-    if page1_clicks > 0:
-        # Logic for generating graph for Page 1
-        figure = px.scatter(x=[1, 2, 3], y=[10, 11, 12], labels={'x': 'X-axis', 'y': 'Y-axis'})
-    elif page2_clicks > 0:
-        # Logic for generating graph for Page 2
-        figure = px.bar(x=[1, 2, 3], y=[10, 11, 12], labels={'x': 'X-axis', 'y': 'Y-axis'})
-    else:
-        # Default graph or logic for other pages
-        figure = px.line(x=[1, 2, 3], y=[10, 11, 12], labels={'x': 'X-axis', 'y': 'Y-axis'})
+    Output('sc-academic-year', 'options'),
+    [Input('update-data-btn', 'n_clicks')])
+def update_academic_year_options(n_clicks):
+    if grade_handler.df is None:
+        return [{'label': 'Error: Data fetching failed', 'value': None}]
 
-    return figure
+    academic_years = extract_academic_years(grade_handler.df)
+
+    options = [{'label': year, 'value': year} for year in academic_years]
+    options.insert(0, {'label': 'All', 'value': 'All'})  # Add an option for displaying all data
+
+    return options
+
+
+@callback(
+    Output('sc-nugget-dropdown', 'options'),
+    [Input('sc-course-dropdown', 'value')]
+)
+def update_score_nugget_options(selected_courses):
+    if not selected_courses:  # If no course is selected, show all nuggets
+        nugget_options = [{'label': nugget, 'value': nugget} for nugget in df['content_name'].unique()]
+    else:
+        # Filter nuggets based on selected courses
+        filtered_df = df[df['fullname'].isin(selected_courses)]
+        nugget_options = [{'label': nugget, 'value': nugget} for nugget in filtered_df['content_name'].unique()]
+
+    return nugget_options
+
+# Modify the callback to use the selected_date_range
+@callback(
+    Output('score-bar-plot', 'figure'),
+    [Input('sc-academic-year', 'value'),
+     Input('sc-course-dropdown', 'value'),
+     Input('sc-nugget-dropdown', 'value'),
+     Input('sc-date-picker-range', 'start_date'),
+     Input('sc-date-picker-range', 'end_date')]
+)
+def update_score_bar_plot(academic_year, selected_courses, selected_nuggets, start_date, end_date):
+    print("Callback triggered.")
+    filtered_df = grade_handler.df.copy()
+
+    if academic_year and academic_year != 'All':
+        start_date_range = pd.to_datetime(f'01-10-{academic_year.split("/")[0]}')
+        end_date_range = pd.to_datetime(f'30-09-{academic_year.split("/")[1]}') + pd.DateOffset(days=1)
+        filtered_df = filtered_df[
+            (filtered_df['day'] >= start_date_range.date()) & (filtered_df['day'] < end_date_range.date())
+        ]
+
+    if selected_nuggets:
+        filtered_df = filtered_df[filtered_df['content_name'].isin(selected_nuggets)]
+
+    if selected_courses:
+        filtered_df = filtered_df[filtered_df['fullname'].isin(selected_courses)]
+
+    if start_date and end_date:
+        start_date, end_date = pd.to_datetime(start_date), pd.to_datetime(end_date)
+        filtered_df = filtered_df[
+            (filtered_df['day'] >= start_date.date()) & (filtered_df['day'] <= end_date.date())
+        ]
+
+        # Debugging prints
+        print("Filtered DataFrame:")
+        print(filtered_df.head())
+
+        # Calculate average daily grade
+        avg_daily_grade = filtered_df.groupby('day')['grade'].mean().reset_index()
+
+        # Debugging prints
+        print("Average Daily Grade DataFrame:")
+        print(avg_daily_grade.head())
+
+
+    # Create bar plot
+    fig = px.bar(
+        avg_daily_grade,
+        x='day',
+        y='grade',
+        labels={'day': 'Date', 'grade': 'Average Daily Grade'},
+        title='Average Daily Grade Over Time'
+    )
+
+    return fig
+
+
+
+#@callback(Output('score-table', 'data-table'),
+#          [Input('sc-nugget-dropdown', 'value'),
+#           Input('sc-course-dropdown', 'value'),
+#           Input('sc-date-picker-range', 'start_date'),
+#           Input('sc-date-picker-range', 'end_date'),
+#           Input('sc-legend-toggle-btn', 'n_clicks'),
+#           Input("sc-reset-btn", "n_clicks")]
+#          )
+#def update_data_table(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click):
+#    pass
+

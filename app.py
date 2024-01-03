@@ -8,6 +8,7 @@ app.title = "THISuccess AI Studierende Analytics Dashboard"
 server = app.server
 app.config.suppress_callback_exceptions = True
 
+
 app.layout = html.Div(
     id="app-container",
     children=[
