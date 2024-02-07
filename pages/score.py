@@ -1,4 +1,4 @@
-import dash
+"""import dash
 from dash import html, dcc, callback, Output, Input, dash_table
 import dash_daq as daq
 import plotly.express as px
@@ -137,7 +137,7 @@ def score_filters():
                 ),
         ],
         className='row'
-        )
+        ),
     ],
 )
 
@@ -233,7 +233,6 @@ def update_score_nugget_options(selected_courses):
      Input('sc-date-picker-range', 'end_date')]
 )
 def update_score_bar_plot(academic_year, selected_courses, selected_nuggets, start_date, end_date):
-    print("Callback triggered.")
     filtered_df = grade_handler.df.copy()
 
     if academic_year and academic_year != 'All':
@@ -255,16 +254,8 @@ def update_score_bar_plot(academic_year, selected_courses, selected_nuggets, sta
             (filtered_df['day'] >= start_date.date()) & (filtered_df['day'] <= end_date.date())
         ]
 
-        # Debugging prints
-        print("Filtered DataFrame:")
-        print(filtered_df.head())
-
         # Calculate average daily grade
         avg_daily_grade = filtered_df.groupby('day')['grade'].mean().reset_index()
-
-        # Debugging prints
-        print("Average Daily Grade DataFrame:")
-        print(avg_daily_grade.head())
 
 
     # Create bar plot
@@ -289,5 +280,5 @@ def update_score_bar_plot(academic_year, selected_courses, selected_nuggets, sta
 #           Input("sc-reset-btn", "n_clicks")]
 #          )
 #def update_data_table(selected_nuggets, selected_courses, start_date, end_date, n_clicks, reset_click):
-#    pass
+#    pass"""
 

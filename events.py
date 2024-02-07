@@ -18,15 +18,23 @@ pd.set_option('mode.chained_assignment', None)
 
 class EventHandling:
 
-    def __init__(self):
+    def __init__(self, cache_file='event_data_cache.json'):
         self.df = None
-        self.cache = TTLCache(maxsize=1, ttl=3600)
-        self.scheduler = BackgroundScheduler()
-        self.scheduler.add_job(self.__fetch, 'interval', minutes=60)
-        self.scheduler.start()
+        self.cache_file = cache_file
 
     def __fetch(self):
         requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
+        if os.path.exists(self.cache_file):
+            file_modified_time = os.path.getmtime(self.cache_file)
+            current_time = time.time()
+            if current_time - file_modified_time < 24 * 3600:
+                print('Loading data from cache...')
+                with open(self.cache_file, 'r') as file:
+                    json_data = json.load(file)
+                    self.df = pd.DataFrame(json_data['data'])
+                    return self.df
+        else:
+            print('Cache file not found. Creating a new one.')
 
         print('Fetching new json data... (Creating local cache)')
 
@@ -34,18 +42,13 @@ class EventHandling:
         try:
             json_data = requests.get('https://success-ai.rz.fh-ingolstadt.de/eventService/get_data_from_db',
                                      verify=False).json()
-            self.cache['data'] = json_data
             self.df = pd.DataFrame(json_data['data'])
-
         except requests.exceptions.RequestException as e:
             print(f"Could not access Event Collection Data (EVC): {e}")
-            if 'data' in self.cache:
-                cached_data = self.cache['data']
-                self.df = pd.DataFrame(cached_data)
-                print("Using cached data.")
-            else:
-                print("Error loading cached data. No cached data available.")
-                self.df = pd.DataFrame()
+
+        with open(self.cache_file, 'w') as file:
+            json.dump(json_data, file)
+
 
         return self.df
 

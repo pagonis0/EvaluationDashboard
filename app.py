@@ -17,7 +17,11 @@ app.layout = html.Div(
             id="banner",
             className="banner",
             children=[
-                html.Img(src=app.get_asset_url("thi_logo_b_RGB.png"), style={"width": "60px", "height": "auto", "margin-right": "10px"}),
+                dcc.Link(
+                    html.Img(src=app.get_asset_url("thi_logo_b_RGB.png"),
+                             style={"width": "60px", "height": "auto", "margin-right": "10px"}),
+                    href="/",
+                ),
                 html.Div(
                     [
                         dcc.Link(
@@ -31,7 +35,7 @@ app.layout = html.Div(
                     style={"margin": "auto"},
                 ),
             ],
-            style={"display": "flex", "justify-content": "flex-start", "align-items": "center", "padding": "10px"},
+            style={"background-color": "#f0f0f0", "display": "flex", "justify-content": "flex-start", "align-items": "center", "padding": "10px"},
         ),
         dash.page_container,
     ]
