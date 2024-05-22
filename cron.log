@@ -1,0 +1,1770 @@
+CRON Job started 2024-05-21 10:00:05.228898
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Fetching new event data... (Creating local cache) 2024-05-21 10:00:05.229059
+Data loaded! 2024-05-21 10:00:14.869733
+Fetching new Metadata data... (Creating local cache) 2024-05-21 10:00:14.903545
+Data loaded! 2024-05-21 10:00:53.257517
+Data combined and ready to use! 2024-05-21 10:00:54.250449
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 10:00:55.881936
+CRON Job ready 2024-05-21 10:00:55.881983
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 10:30:01.728763
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 10:30:01.728902
+Loading metadata from cache... 2024-05-21 10:30:03.256869
+Data combined and ready to use! 2024-05-21 10:30:12.301216
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 10:30:13.967940
+CRON Job ready 2024-05-21 10:30:13.967958
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 11:00:01.997157
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 11:00:01.997448
+Loading metadata from cache... 2024-05-21 11:00:03.546317
+Data combined and ready to use! 2024-05-21 11:00:12.410742
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 11:00:13.967142
+CRON Job ready 2024-05-21 11:00:13.967157
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 11:30:02.057436
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 11:30:02.057570
+Loading metadata from cache... 2024-05-21 11:30:03.546539
+Data combined and ready to use! 2024-05-21 11:30:12.528548
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 11:30:14.093314
+CRON Job ready 2024-05-21 11:30:14.093335
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 12:00:01.326717
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 12:00:01.326860
+Loading metadata from cache... 2024-05-21 12:00:02.872300
+Data combined and ready to use! 2024-05-21 12:00:12.281987
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 12:00:14.006777
+CRON Job ready 2024-05-21 12:00:14.006800
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 12:30:01.909949
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 12:30:01.910132
+Loading metadata from cache... 2024-05-21 12:30:03.392767
+Data combined and ready to use! 2024-05-21 12:30:11.980202
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 12:30:13.646820
+CRON Job ready 2024-05-21 12:30:13.646844
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 13:00:01.415564
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 13:00:01.415702
+Loading metadata from cache... 2024-05-21 13:00:02.978321
+Data combined and ready to use! 2024-05-21 13:00:12.159416
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 13:00:13.899540
+CRON Job ready 2024-05-21 13:00:13.899563
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 13:32:44.340751
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 13:32:44.340843
+Loading metadata from cache... 2024-05-21 13:32:45.820253
+Data combined and ready to use! 2024-05-21 13:32:55.301419
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 13:32:57.029900
+CRON Job ready 2024-05-21 13:32:57.029920
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 14:00:02.151897
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 14:00:02.152050
+Loading metadata from cache... 2024-05-21 14:00:03.624793
+Data combined and ready to use! 2024-05-21 14:00:12.594939
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 14:00:14.356372
+CRON Job ready 2024-05-21 14:00:14.356400
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 14:30:01.421534
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 14:30:01.421688
+Loading metadata from cache... 2024-05-21 14:30:02.857216
+Data combined and ready to use! 2024-05-21 14:30:11.310985
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 14:30:13.009354
+CRON Job ready 2024-05-21 14:30:13.009378
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 15:00:01.709400
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 15:00:01.709542
+Loading metadata from cache... 2024-05-21 15:00:03.204718
+Data combined and ready to use! 2024-05-21 15:00:11.583251
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 15:00:13.247720
+CRON Job ready 2024-05-21 15:00:13.247748
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 16:00:02.130563
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 16:00:02.130790
+Loading metadata from cache... 2024-05-21 16:00:03.678039
+Data combined and ready to use! 2024-05-21 16:00:12.679753
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 16:00:14.412637
+CRON Job ready 2024-05-21 16:00:14.412663
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 16:30:01.778936
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 16:30:01.779090
+Loading metadata from cache... 2024-05-21 16:30:03.269157
+Data combined and ready to use! 2024-05-21 16:30:12.955977
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 16:30:14.737387
+CRON Job ready 2024-05-21 16:30:14.737423
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 17:30:02.379159
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 17:30:02.379256
+Loading metadata from cache... 2024-05-21 17:30:03.821960
+Data combined and ready to use! 2024-05-21 17:30:11.772984
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 17:30:13.239365
+CRON Job ready 2024-05-21 17:30:13.239384
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 18:00:01.618585
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 18:00:01.618713
+Loading metadata from cache... 2024-05-21 18:00:03.065974
+Data combined and ready to use! 2024-05-21 18:00:11.075582
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 18:00:12.606431
+CRON Job ready 2024-05-21 18:00:12.606450
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 18:32:10.998999
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 18:32:10.999104
+Loading metadata from cache... 2024-05-21 18:32:12.477552
+Data combined and ready to use! 2024-05-21 18:32:21.496733
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 18:32:23.085968
+CRON Job ready 2024-05-21 18:32:23.085992
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-21 20:00:02.234289
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-21 20:00:02.234399
+Loading metadata from cache... 2024-05-21 20:00:03.568693
+Data combined and ready to use! 2024-05-21 20:00:11.902978
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-21 20:00:13.477162
+CRON Job ready 2024-05-21 20:00:13.477181
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 09:00:02.075500
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Fetching new event data... (Creating local cache) 2024-05-22 09:00:02.075656
+Data loaded! 2024-05-22 09:00:11.361007
+Fetching new Metadata data... (Creating local cache) 2024-05-22 09:00:11.394961
+Data loaded! 2024-05-22 09:00:49.878983
+Data combined and ready to use! 2024-05-22 09:00:50.920464
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 09:00:52.539154
+CRON Job ready 2024-05-22 09:00:52.539186
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 09:30:01.643936
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 09:30:01.645471
+Loading metadata from cache... 2024-05-22 09:30:03.184520
+Data combined and ready to use! 2024-05-22 09:30:11.995063
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 09:30:13.731913
+CRON Job ready 2024-05-22 09:30:13.731956
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 10:00:02.096581
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 10:00:02.096714
+Loading metadata from cache... 2024-05-22 10:00:03.657534
+Data combined and ready to use! 2024-05-22 10:00:12.399727
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 10:00:14.136412
+CRON Job ready 2024-05-22 10:00:14.136453
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 11:30:01.291380
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 11:30:01.291512
+Loading metadata from cache... 2024-05-22 11:30:02.809867
+Data combined and ready to use! 2024-05-22 11:30:11.660349
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 11:30:13.321330
+CRON Job ready 2024-05-22 11:30:13.321379
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 12:00:01.453979
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 12:00:01.454123
+Loading metadata from cache... 2024-05-22 12:00:02.958016
+Data combined and ready to use! 2024-05-22 12:00:11.753067
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 12:00:13.474074
+CRON Job ready 2024-05-22 12:00:13.474120
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 12:30:01.868345
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 12:30:01.868505
+Loading metadata from cache... 2024-05-22 12:30:03.385156
+Data combined and ready to use! 2024-05-22 12:30:12.151759
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 12:30:13.639493
+CRON Job ready 2024-05-22 12:30:13.639531
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+CRON Job started 2024-05-22 13:00:01.403069
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 13:00:01.403183
+Loading metadata from cache... 2024-05-22 13:00:02.950979
+Data combined and ready to use! 2024-05-22 13:00:11.806649
+action                        object
+anonymous                    float64
+component                     object
+contextid                    float64
+contextinstanceid             object
+contextlevel                 float64
+courseid                       int64
+coursename                    object
+crud                          object
+edulevel                     float64
+eventname                     object
+finishtime                    object
+grade                        float64
+grade_to_pass                float64
+lectureDate                   object
+membersInCourse              float64
+nuggetName                    object
+number_of_attempts           float64
+objectid                       int64
+objecttable                   object
+others                        object
+quizid                        object
+recourceFiletype              object
+relateduserid                 object
+scromCurrentGrade            float64
+scromHighestGrade             object
+scromId                       object
+scromNeeded                   object
+sectionnumber                float64
+starttime                     object
+target                        object
+timecreated           datetime64[ns]
+user_id                        int64
+month                         object
+week                          UInt32
+year-week                     object
+year                           int32
+day                           object
+semester                      object
+id                           float64
+course                       float64
+module                       float64
+instance                     float64
+is_ln                         object
+example                      float64
+motivation                   float64
+explanation                  float64
+assignment                   float64
+experiment                   float64
+description                   object
+contenttype                   object
+difficulty                    object
+activitytopic                 object
+expectedtime                  object
+language                      object
+prerequisites                 object
+keywords                      object
+resp_id                      float64
+content_name                  object
+name                          object
+course_section                object
+dtype: object
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 13:00:13.523522
+CRON Job ready 2024-05-22 13:00:13.523556
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 13:30:02.029270
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 13:30:02.029394
+Loading metadata from cache... 2024-05-22 13:30:03.396243
+Data combined and ready to use! 2024-05-22 13:30:12.212779
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 13:30:13.953961
+CRON Job ready 2024-05-22 13:30:13.953999
+Running dataset
+Dataset Loaded successfully 2024-05-22 13:30:15.937680
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 14:00:01.364899
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 14:00:01.364987
+Loading metadata from cache... 2024-05-22 14:00:02.829642
+Data combined and ready to use! 2024-05-22 14:00:11.313140
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 14:00:13.098297
+CRON Job ready 2024-05-22 14:00:13.098330
+Running dataset
+Dataset Loaded successfully 2024-05-22 14:00:15.385398
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 14:30:01.403081
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 14:30:01.403216
+Loading metadata from cache... 2024-05-22 14:30:02.982524
+Data combined and ready to use! 2024-05-22 14:30:11.900400
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 14:30:13.651242
+CRON Job ready 2024-05-22 14:30:13.651291
+Running dataset
+Dataset Loaded successfully 2024-05-22 14:30:16.070347
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 15:00:01.869881
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 15:00:01.870021
+Loading metadata from cache... 2024-05-22 15:00:03.455214
+Data combined and ready to use! 2024-05-22 15:00:12.317332
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 15:00:14.112606
+CRON Job ready 2024-05-22 15:00:14.112661
+Running dataset
+Dataset Loaded successfully 2024-05-22 15:00:16.340505
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 15:30:26.470747
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 15:30:26.470967
+Loading metadata from cache... 2024-05-22 15:30:27.841182
+Data combined and ready to use! 2024-05-22 15:30:37.047515
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 15:30:38.841979
+CRON Job ready 2024-05-22 15:30:38.842018
+Running dataset
+Dataset Loaded successfully 2024-05-22 15:30:42.121077
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 16:01:32.685585
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 16:01:32.685733
+Loading metadata from cache... 2024-05-22 16:02:20.362877
+Data combined and ready to use! 2024-05-22 16:02:30.049804
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 16:03:17.538251
+CRON Job ready 2024-05-22 16:03:17.538273
+Running dataset
+Dataset Loaded successfully 2024-05-22 16:03:19.723507
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 16:31:01.504945
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 16:31:01.505083
+Loading metadata from cache... 2024-05-22 16:31:02.903921
+Data combined and ready to use! 2024-05-22 16:31:11.808210
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 16:31:13.614794
+CRON Job ready 2024-05-22 16:31:13.614827
+Running dataset
+Dataset Loaded successfully 2024-05-22 16:31:16.057807
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Running scheduler
+CRON Job started 2024-05-22 17:00:01.713947
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
+Loading data from cache... 2024-05-22 17:00:01.714109
+Loading metadata from cache... 2024-05-22 17:00:03.200341
+Data combined and ready to use! 2024-05-22 17:00:12.025842
+Dataset saved to /Users/pagonis/Documents/THI/THISuccess/Code/TestEval/dataset.csv 2024-05-22 17:00:13.754823
+CRON Job ready 2024-05-22 17:00:13.754871
+Running dataset
+Dataset Loaded successfully 2024-05-22 17:00:16.151130
+Current working directory: /Users/pagonis/Documents/THI/THISuccess/Code/TestEval
