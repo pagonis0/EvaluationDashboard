@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="/eval/flaskdash/static/main.css">
+
+    {% if title %}
+        <title>SuccessAI Data Center - {{ title }}</title>
+    {% else %}
+        <title>SuccessAI Data Center</title>
+    {% endif %}
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+    <link rel="manifest" href="static/images/site.webmanifest">
+    <link rel="mask-icon" href="static/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="/eval/">
+                <img src="/eval/flaskdash/static/thi_logo_b_RGB.png" alt="Logo" class="logo-img" height="40px">
+            </a>
+            <a class="navbar-brand mr-4" href="/eval">Data Center</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              {% if not is_interface and not is_dash %}
+                <a class="nav-item nav-link" href="/eval{{ url_for('main.home') }}">Home</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('dash.nutzung') }}">Dashboards</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('main.download') }}">Downloads</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('interface.index') }}">Empfehlungssystem</a>
+              {% elif is_interface %}
+                <a class="nav-item nav-link" href="/eval{{ url_for('main.home') }}">Back to Home</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('interface.index') }}">Test Interface</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('interface.lns') }}">Learning Nuggets</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('interface.courses') }}">Courses</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('interface.profile') }}">Profile</a>
+                {% if has_recommendation %}
+                  <a class="nav-item nav-link" href="/eval{{ url_for('interface.recommend') }}">Recommendation</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="#">Recommendation</a>
+                {% endif %}
+              {% elif is_dash %}
+                <a class="nav-item nav-link" href="/eval{{ url_for('main.home') }}">Back to Home</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('dash.nutzung') }}">Nutzungsanalyse</a>
+                <a class="nav-item nav-link" href="/eval{{ url_for('dash.noten') }}">Bepunktungsanalyse</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Statische Grafiken
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/eval{{ url_for('dash.primussws23') }}">Primuss Analysis WS23/24</a>
+                  </div>
+                </li>
+                <a class="nav-item nav-link" href="/eval{{ url_for('dash.chatbot_overview') }}">Chatbot Analyse</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if is_interface %}
+        <div class="navbar navbar-default">
+          <div class="nav pull-right">
+              <a type="reset" class="btn btn-primary navbar-btn" href="/eval{{ url_for('interface.init_session') }}" style="background-color:LightCoral;">
+                  Reset Session
+              </a>
+          </div>
+        </div>
+        {% endif %}
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <!-- Include Dash Application Content -->
+    <div class="dash-content">
+        {% block dash_content %}{% endblock %}
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

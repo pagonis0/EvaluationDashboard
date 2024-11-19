@@ -1,0 +1,6 @@
+{
+  "SECRET_KEY": "key",
+  "SESSION_TYPE": "filesystem",
+  "SESSION_PERMANENT": "False",
+  "SESSION_FILE_THRESHOLD": 50
+}

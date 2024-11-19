@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    main.container {
+        margin: 0;
+    }
+
+    #dashboard-iframe {
+        width: 99vw; 
+        height: 100vh; 
+        border: none;
+    }
+</style>
+<br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+    Dashboard Anleitung
+</button>
+  
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Dashboard Anleitung</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        Alle mit einem Sternchen (*) markierten Felder sind Pflichtfelder, um das Dashboard zu zeichnen.<br>
+        Wählen Sie zuerst das Studienjahr aus. Dann müssen Sie das Semester auswählen (<b>Hinweis</b>: 
+        Wenn beide oder keines der Semester ausgewählt ist, werden beide angezeigt).<br>
+        Bei der Auswahl von Kursen stehen alle anderen Filteroptionen zur Verfügung. 
+        Zusätzlich wird zwischen dem Balkendiagramm und der Datentabelle ein Kreisdiagramm gezeichnet.<br>
+        Abhängig von den ausgewählten Filtern sind bis zu fünf verschiedene Ansichten verfügbar und können im Dropdown-Menü „Sicht“ 
+        unter dem Balkendiagramm ausgewählt werden.<br>
+        Zusätzlich können durch Klicken in die Legende des Balkendiagramms bestimmte Balken ausgeblendet oder angezeigt werden.<br>
+        Alle Grafiken können als PNG-Datei heruntergeladen werden, indem Sie auf das Symbol im Diagramm klicken.
+        Darüber hinaus können die Diagramme durch Ziehen und Ablegen oder Vergrößern und Verkleinern nach Belieben bearbeitet werden.
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+    </div>
+    </div>
+</div>
+</div>
+<div>
+<br>
+<iframe id="dashboard-iframe" src="/eval/dash/graphs/usage/" frameborder="0"></iframe>
+</div>
+
+{% endblock content %}

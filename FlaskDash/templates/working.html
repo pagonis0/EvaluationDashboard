@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Under Construction</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        text-align: center;
+    }
+    h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 30px;
+    }
+    .logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .fa-spin {
+        animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="/eval/flaskdash/static/thi_logo_b_RGB.png" alt="Logo" class="logo">
+    <h1>Under Construction</h1>
+    <p>We are currently working on this page. Please check back later.</p>
+    <i class="fas fa-cog fa-4x fa-spin" style="color: #999;"></i>
+</div>
+</body>
+{% endblock content %}

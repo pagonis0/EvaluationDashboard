@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>{% block title %} Recommender TestInterface {% endblock %}</h1>
+    <ul>
+        <li>
+            Fill in the profile with a history of <a href="/eval{{url_for('interface.lns')}}">Learning Nuggets</a>.<br />
+        </li>
+        <li>
+            Fill in the profile with enrolled <a href="/eval{{url_for('interface.courses')}}">courses</a>.<br />
+        </li>
+        <li>
+            Manage <a href="/eval{{url_for('interface.profile')}}">profile</a> and set learning preference.<br />
+        </li>
+    </ul>
+    &emsp;&emsp;=> Get a recommendation for the created profile.
+
+    <br /><br />
+
+    <h2>Notes:</h2>
+    <ul>
+        <li>
+            Eine Beschreibung des Empfehlungssystems liegt im <a href="https://thide.sharepoint.com/:w:/r/sites/THI-TEAM-THISuccessAI/Freigegebene%20Dokumente/General/92_Arbeitsdateien_Technik/Learning%20Analytics%20%26%20Recommendation%20System/Not%20too%20technical%20guide%20to%20the%20Learning%20Path%20Recommender.docx?d=wf2bd89a1a82a4102a488944b8b1abaa4&csf=1&web=1&e=fe1lvR">SharePoint</a>.
+        </li>
+        <li>
+            Das Empfehlungssystem ist evtl. nicht auf dem aktuellsten Stand der Learning Nuggets, daher kann es sein, dass neuere LNs grundsätzlich nicht empfohlen werden.<br>
+            Die Liste der <a href="/eval{{url_for('interface.lns')}}">Learning Nuggets</a> sollte aber auf dem neuesten Stand sein. Wenn ihr ein spezifisches LN vermisst, könnt ihr versuchen, die Liste über den entsprechenden Button upzudaten. Beachtet dabei aber, dass das Update evtl. eine Minute oder länger dauern kann.
+        </li>
+        <li>
+            Der Umfang der Empfehlung entspricht den Empfehlungen, wie sie in Moodle für das Dashboard angefragt werden. Das heißt, für jeden eingeschriebenen Kurs wird ein separater Pfad empfohlen.
+        </li>
+        <li>
+            Die Personalisierung hängt aktuell größtenteils von den Aufgaben ab. <br />
+            Da sich anhand der LN Metadaten, wie sie hier für die Liste gespeichert sind, nicht ablesen lässt, ob ein LN eine Aufgabe ist, werden aktuell alle LNs mit Schwierigkeitsgrad als solche behandelt. (Das gilt für dieses Interface, nicht für die Empfehlungen in Moodle.)
+            Wenn ihr von einem LN wisst, dass es keine Aufgabe ist, lasst ihr die Note im <a href="/eval{{url_for('interface.profile')}}">Profil</a> am besten auf 0.5.
+        </li>
+        <li>
+            In der Notenfestlegung im Profil ist ein Bug, den ich noch nicht ganz beheben konnte: <br />
+            Wenn über den Slider die Note für ein LN verändert werden soll, ändert sich der angezeigte Wert zunächst immer bei der ersten Aufgabe in der Liste. Es wird aber der richtige Wert eingetragen, wenn die Note für das richtige LN über den "Set"-Button festgelegt wird.
+        </li>
+    </ul>
+    Bei Fragen, Fehlern, oder Anmerkungen, meldet euch bitte an <a href="mailto:kai.hartung@thi.de">kai.hartung@thi.de</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form onchange="/eval{{ url_for('interface.testathing') }}" method="post">
+    <input type="number" id="steps" name="steps" min="-{{ max_steps }}" max="{{ max_steps }}" value="{{ n_steps }}" />
+    <select name="course" method="GET" action="/interface">
+        {% for course in courses %}
+            <option value="{{course[0]}}" SELECTED>{{course[1]}}</option>"
+        {% endfor %}
+    </select>
+</form>
+
+<h1>Here's a Plotly graph!</h1>
+{{ fig }}
+<p>And here's some text after the graph.</p>
+{% endblock %}

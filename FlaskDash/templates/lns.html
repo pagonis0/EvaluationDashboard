@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+  thead input {
+        width: 100%;
+    }
+</style>
+
+<h2>Learning Nugget list</h2>
+<form method="post">
+  <div class="form-group">
+    <br />
+    <button type="submit" name="update_button" value="update" class="btn btn-primary" data-toggle="modal" data-target="#update" style="background-color:red">
+      Update (Takes time!)
+    </button>
+
+    <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body" style="background-color:LightCoral;text-align:center;font-weight:bold;font-size:1.1em;color:white">
+              ...updating LNs & Courses...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+  </div>
+</form>
+<div style="position:relative;width:1000px" class="tablecontainer">
+    <div>  
+      <table id="data" class="table table-striped">
+        <thead>
+
+          <tr>
+            {% for col in column_names %}
+              <th>
+                {{col}}
+              </th>
+            {% endfor %}
+          </tr>
+
+        </thead>
+
+            <tbody>
+              {% for row_id, row in enumerate(row_data) %}
+              <tr>
+                {% for col, entry in zip(column_names, row) %}
+                  {% if col == 'ID' %}
+                  <td>
+                    <a href="/eval{{ url_for('interface.ln', ln_id=entry) }}">{{entry}}</a>
+                  </td>
+                  {% elif col == 'Moodle' %}
+                    <td>
+                      <a href="{{entry}}" target="_blank">Link</a>
+                    </td>
+                  {% elif col == '' %}
+                    <td>
+                      <form method="post">
+                        <button type="submit" name="add_button" value="{{row[0]}}" class="btn btn-primary" data-toggle="modal" id="tagid{{entry.index}}" data-target="#tags{{row_id}}">Add</button>
+                      </form>
+                    </td>
+
+                    <div class="modal fade" id="tags{{row_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            {{entry}}: "{{row[1]}}"
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  {% else %}
+                    <td> {{entry}} </td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+              {% endfor %}
+
+            </tbody>
+      </table>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<script>
+  $(document).ready(function () {
+    // Setup - add a text input to each footer cell
+    $('#data thead tr')
+           .clone(true)
+           .addClass('filters')
+           .appendTo('#data thead');
+
+    var table = $('#data').DataTable({
+      orderCellsTop: true,
+      fixedHeader: true,
+      initComplete: function () {
+        var api = this.api();
+
+        // For each column
+        api
+           .columns()
+           .eq(0)
+           .each(function (colIdx) {
+             // Set the header cell to contain the input element
+             var cell = $('.filters th').eq(
+               $(api.column(colIdx).header()).index()
+               );
+             var title = $(cell).text();
+             $(cell).html('<input type="text" placeholder="' + '" />');
+
+             // On every keypress in this input
+             $(
+               'input',
+               $('.filters th').eq($(api.column(colIdx).header()).index())
+             )
+               .off('keyup change')
+               .on('change', function (e) {
+                 // Get the search value
+                 $(this).attr('title', $(this).val());
+                 var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                 var cursorPosition = this.selectionStart;
+                 // Search the column for that value
+                 api
+                   .column(colIdx)
+                   .search(
+                     this.value != ''
+                     ? regexr.replace('{search}', '(((' + this.value + ')))')
+                     : '',
+                     this.value != '',
+                     this.value == ''
+                   )
+                     .draw();
+               })
+                 .on('keyup', function (e) {
+                   e.stopPropagation();
+
+                   $(this).trigger('change');
+                   $(this)
+                     .focus()[0]
+                     .setSelectionRange(cursorPosition, cursorPosition);
+                 });
+           });
+      },
+    });
+  });
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();    // prevent page from refreshing
+    const formData = new FormData(form);  // grab the data inside the form fields
+    fetch('/', {   // assuming the backend is hosted on the same server
+      method: 'POST',
+      body: formData,
+    }).then(function(response) {
+      // do something with the response if needed.
+      // If you want the table to be built only after the backend handles the request and replies, call buildTable() here.
+      });
+  });
+  </script>
+{% endblock %}

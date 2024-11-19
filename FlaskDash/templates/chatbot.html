@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    main.container {
+        margin: 0;
+    }
+
+    #dashboard-iframe {
+        width: 99vw;
+        height: 100vh;
+        border: none;
+    }
+</style>
+<br>
+<div>
+<br>
+<iframe id="dashboard-iframe" src="/eval/dash/graphs/chatbot/" frameborder="0"></iframe>
+</div>
+
+{% endblock content %}

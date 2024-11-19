@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Plotly Plots</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        /* Ensure the entire page is full-width without any padding or margin */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 70vw;
+        }
+
+        /* Ensure full-width display of the plots */
+        .full-width-container {
+            width: 80vw;         /* Full viewport width */
+            padding: 0;           /* Remove padding */
+            margin: 0;            /* Remove margin */
+            box-sizing: border-box; /* Include padding/margin in width calculations */
+        }
+
+        /* Each plot div should take up the full width */
+        .full-width-plot {
+            width: 80vw;         /* Full viewport width for each plot */
+            height: 600px;        /* Adjust height as desired */
+            margin: 0 auto;       /* Center the plot */
+            padding: 0;           /* No padding */
+        }
+    </style>
+</head>
+<body>
+    <div class="full-width-container">
+        <h1 style="text-align: center;">Primuss Evaluation WS23/24</h1>
+        
+        <!-- Full-width plot divs -->
+        <div id="plot1" class="full-width-plot"></div>
+        <div id="plot2" class="full-width-plot"></div>
+        <div id="plot3" class="full-width-plot"></div>
+        <div id="plot4" class="full-width-plot"></div>
+        <div id="plot5" class="full-width-plot"></div>
+        <div id="plot6" class="full-width-plot"></div>
+        <div id="plot7" class="full-width-plot"></div>
+        <div id="plot8" class="full-width-plot"></div>
+        <div id="plot9" class="full-width-plot"></div>
+        <div id="plot10" class="full-width-plot"></div>
+        <div id="plot11" class="full-width-plot"></div>
+        <div id="plot12" class="full-width-plot"></div>
+    </div>
+
+    <script>
+        // Variables for each plot data and layout
+        var plot1 = {{ plot1|tojson }};
+        var plot2 = {{ plot2|tojson }};
+        var plot3 = {{ plot3|tojson }};
+        var plot4 = {{ plot4|tojson }};
+        var plot5 = {{ plot5|tojson }};
+        var plot6 = {{ plot6|tojson }};
+        var plot7 = {{ plot7|tojson }};
+        var plot8 = {{ plot8|tojson }};
+        var plot9 = {{ plot9|tojson }};
+        var plot10 = {{ plot10|tojson }};
+        var plot11 = {{ plot11|tojson }};
+        var plot12 = {{ plot12|tojson }};
+        
+        // Plotting each graph with Plotly
+        Plotly.newPlot('plot1', plot1.data, plot1.layout);
+        Plotly.newPlot('plot2', plot2.data, plot2.layout);
+        Plotly.newPlot('plot3', plot3.data, plot3.layout);
+        Plotly.newPlot('plot4', plot4.data, plot4.layout);
+        Plotly.newPlot('plot5', plot5.data, plot5.layout);
+        Plotly.newPlot('plot6', plot6.data, plot6.layout);
+        Plotly.newPlot('plot7', plot7.data, plot7.layout);
+        Plotly.newPlot('plot8', plot8.data, plot8.layout);
+        Plotly.newPlot('plot9', plot9.data, plot9.layout);
+        Plotly.newPlot('plot10', plot10.data, plot10.layout);
+        Plotly.newPlot('plot11', plot11.data, plot11.layout);
+        Plotly.newPlot('plot12', plot12.data, plot12.layout);
+    </script>
+</body>
+{% endblock content %}

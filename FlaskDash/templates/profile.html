@@ -1,0 +1,126 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>{% block title %} Profile {% endblock %}</h1>
+
+<!-- ========= EMPTY PROFILE BUTTON =========
+<form method="post">
+  <div class="form-group">
+      <br />
+      <button type="submit" name="empty_button" value="empty" class="btn btn-primary" style="background-color:red">
+          Empty Profile (Irreversible!)
+      </button>
+      <br /><br />
+  </div>
+</form> -->
+
+<div style="float:left">
+
+    <h1 style="font-size:2rem"> History </h1>
+
+    <!-- ========= FILL LN HISTORY ========= -->
+    {% for row_index, (index, ln) in enumerate(zip(ln_indices, lns)) %}
+        <a href="/eval{{ url_for('interface.ln', ln_id=ln['ln_id']) }}">
+            <h2 style="font-size:1.1rem">{{ ln['ln_name']}}</h2>
+        </a>
+        <a style="font-size:0.9rem">
+        Course: <span class="badge badge-primary">{{ ln['course_id']}} - {{ ln['course_name']}}</span>&emsp;-&emsp;
+        Category: <span class="badge badge-primary"> {{ ln['category'] }} </span>&emsp;-&emsp;
+        Section: <span class="badge badge-primary"> {{ ln['section_id'] }} - {{ ln['section_name'] }} </span>
+        <form method="POST">
+            <button type="submit" name="remove_ln_button" value="{{index}}" class="btn btn-primary" style="background-color:red">
+              Remove
+            </button>
+        </form>
+        </a>
+        {% if ln['difficulty'] != 'No difficulty' %}
+            <form method="POST">
+                <a style="font-size:0.9rem">
+                    Grade:
+                    <input type="range" min="0" max="1" value="{{ln['grade']}}" name="grade" step="0.01" oninput="rangeValue.innerText = this.value"/>
+                    <p id="rangeValue" style="display:inline">{{ln['grade']}}</p> &emsp;
+                    <input type="submit" name="grade_button" value="Set"/>
+                    <input type="hidden" name="index" value="{{ index }}"/>
+
+                </a>
+            </form>
+        {% endif %}
+        <hr>
+    {% endfor %}
+
+    <br />
+    <h1 style="font-size:2rem"> Enrolled Courses </h1>
+
+    <!-- ========= FILL ENROLLED COURSES ========= -->
+    {% for index, course in zip(course_indices, courses) %}
+        <h2 style="font-size:1.1rem">{{course['ID']}} : {{course['name']}}</h2>
+        <form method="POST">
+            <button type="submit" name="remove_course_button" value="{{index}}" class="btn btn-primary" style="background-color:red">
+              Remove
+            </button>
+        </form>
+        <hr>
+    {% endfor %}
+
+</div>
+<div style="float:right;">
+
+    <h1 style="font-size:2rem"> Learning Preference </h1>
+
+    <!-- ========= LEARNING PREFERENCE ========= -->
+    <form method="POST">
+        {% if learning_style == 'Diverging' %}
+            <input type="radio" name="options" id="option1" value="Diverging" checked> Diverging </input><br>
+            <input type="radio" name="options" id="option2" value="Assimilating"> Assimilating </input><br>
+            <input type="radio" name="options" id="option3" value="Converging"> Converging </input><br>
+            <input type="radio" name="options" id="option4" value="Accommodating"> Accommodating </input><br>
+        {% else %}
+            <input type="radio" name="options" id="option1" value="Diverging"> Diverging </input><br>
+            {% if learning_style == 'Assimilating' %}
+                <input type="radio" name="options" id="option2" value="Assimilating" checked> Assimilating </input><br>
+                <input type="radio" name="options" id="option3" value="Converging"> Converging </input><br>
+                <input type="radio" name="options" id="option4" value="Accommodating"> Accommodating </input><br>
+            {% else %}
+                <input type="radio" name="options" id="option2" value="Assimilating"> Assimilating </input><br>
+                {% if learning_style == 'Converging' %}
+                    <input type="radio" name="options" id="option3" value="Converging" checked> Converging </input><br>
+                    <input type="radio" name="options" id="option4" value="Accommodating"> Accommodating </input><br>
+                {% else %}
+                    <input type="radio" name="options" id="option3" value="Converging"> Converging </input><br>
+                    {% if learning_style == 'Accommodating' %}
+                        <input type="radio" name="options" id="option4" value="Accommodating" checked> Accommodating </input><br>
+                    {% else %}
+                        <input type="radio" name="options" id="option4" value="Accommodating"> Accommodating </input><br>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <input type="submit" name="style_button" value="Set"/>
+    </form>
+
+    <br /><br />
+
+    <!-- ========= Recommendation Button ========= -->
+    {% if len(courses) == 0 %}
+        <p style="background-color:LightCoral;">Please choose enrolled courses to get a Recommendation</p>
+        <button type="submit" name="recommend_button" class="btn btn-primary" style="background-color:CornflowerBlue" disabled="disabled">
+            Recommend
+        </button>
+    {% else %}
+        <br />
+        <form method="POST">
+            <button type="submit" name="recommend_button" class="btn btn-primary" style="background-color:Blue">
+                Recommend
+            </button>
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    body {background: linear-gradient(to right, red, yellow);}.slider {position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 500px;height: 60px;padding: 30px;padding-left: 40px;background: #fcfcfc;border-radius: 20px;display: flex;align-items: center;box-shadow: 0px 15px 40px #7E6D5766;}.slider p {font-size: 26px;font-weight: 600;font-family: Open Sans;padding-left: 30px;color: black;}.slider input[type="range"] {-webkit-appearance:none !important;width: 420px;height: 2px;background: black;border: none;outline: none;}.slider input[type="range"]::-webkit-slider-thumb {-webkit-appearance: none !important;width: 30px;height:30px;background: black;border: 2px solid black;border-radius: 50%;cursor: pointer;}.slider input[type="range"]::-webkit-slider-thumb:hover {background: black;}
+</script>
+{% endblock %}

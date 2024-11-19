@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Download Form</h1>
+    <form method="POST" action="/eval/downloads">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <label for="academic_year" class="control-label">Studienjahr</label>
+            <select class="form-control" id="academic_year" name="academic_year">
+                {% for choice in form.academic_year.choices %}
+                    <option value="{{ choice[0] }}">{{ choice[1] }}</option>
+                {% endfor %}
+            </select>
+            {% for error in form.academic_year.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="semester" class="control-label">Semster</label>
+            <select class="form-control" id="semester" name="semester">
+                {% for choice in form.semester.choices %}
+                    <option value="{{ choice[0] }}">{{ choice[1] }}</option>
+                {% endfor %}
+            </select>
+            {% for error in form.semester.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <label for="course" class="control-label">Kurs</label>
+            <select class="form-control" id="course" name="course">
+                {% for choice in form.course.choices %}
+                    <option value="{{ choice[0] }}">{{ choice[1] }}</option>
+                {% endfor %}
+            </select>
+            {% for error in form.course.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Download</button>
+    </form>
+{% endblock content %}
